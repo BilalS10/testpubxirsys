@@ -36,6 +36,7 @@ const rtcConfig = {
         username: "4HgEvibx2lvMLAhuFCBsQmhRli90Ul_myE_49c4pPm1cijRIDUry2Gpn0FSoA4JUAAAAAF0m4EZCaWxhbFMxMA==",
         credential: "985691dc-a3aa-11e9-adb9-9646de0e6ccd",
         urls: [
+            "stun:bturn2.xirsys.com",
             "turn:bturn2.xirsys.com:80?transport=udp",
             "turn:bturn2.xirsys.com:3478?transport=udp",
             "turn:bturn2.xirsys.com:80?transport=tcp",
@@ -153,7 +154,7 @@ const initWebRtcApp = () => {
                     request(turnApiUrl, 'PUT', {
                         'headers': { 'tok': turnToken }
                     }).then((response) => {
-                        console.log('token received!')
+                        console.log('token received!');
                         rtcConfig.iceServers = [response];
                         webRtcPhone.callUser(userToCall, {
                             myStream: myAudioVideoStream
