@@ -31,7 +31,22 @@ let webRtcPhone;
 let pubnub;
 // An RTCConfiguration dictionary from the browser WebRTC API
 // Add STUN and TURN server information here for WebRTC calling
-const rtcConfig = {};
+const rtcConfig = {
+    iceServers: [{
+        urls: [ "stun:bturn2.xirsys.com" ]
+     }, {
+        username: "4HgEvibx2lvMLAhuFCBsQmhRli90Ul_myE_49c4pPm1cijRIDUry2Gpn0FSoA4JUAAAAAF0m4EZCaWxhbFMxMA==",
+        credential: "985691dc-a3aa-11e9-adb9-9646de0e6ccd",
+        urls: [
+            "turn:bturn2.xirsys.com:80?transport=udp",
+            "turn:bturn2.xirsys.com:3478?transport=udp",
+            "turn:bturn2.xirsys.com:80?transport=tcp",
+            "turn:bturn2.xirsys.com:3478?transport=tcp",
+            "turns:bturn2.xirsys.com:443?transport=tcp",
+            "turns:bturn2.xirsys.com:5349?transport=tcp"
+        ]
+     }]
+};
 let username; // User's name in the app
 let myAudioVideoStream; // Local audio and video stream
 let noVideoTimeout; // Used to check if a video connection succeeded
