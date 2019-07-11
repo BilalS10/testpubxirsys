@@ -32,9 +32,7 @@ let pubnub;
 // An RTCConfiguration dictionary from the browser WebRTC API
 // Add STUN and TURN server information here for WebRTC calling
 const rtcConfig = {
-    iceServers: [{
-        urls: [ "stun:bturn2.xirsys.com" ]
-     }, {
+    iceServers: [ {
         username: "4HgEvibx2lvMLAhuFCBsQmhRli90Ul_myE_49c4pPm1cijRIDUry2Gpn0FSoA4JUAAAAAF0m4EZCaWxhbFMxMA==",
         credential: "985691dc-a3aa-11e9-adb9-9646de0e6ccd",
         urls: [
@@ -155,6 +153,7 @@ const initWebRtcApp = () => {
                     request(turnApiUrl, 'PUT', {
                         'headers': { 'tok': turnToken }
                     }).then((response) => {
+                        console.log('token received!')
                         rtcConfig.iceServers = [response];
                         webRtcPhone.callUser(userToCall, {
                             myStream: myAudioVideoStream
